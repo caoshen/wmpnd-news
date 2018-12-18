@@ -1,0 +1,119 @@
+/**index.wxss**/
+.main-container {
+  display: flex;
+  flex-direction: column
+}
+
+.navbar {
+  display: flex;
+  width: 100%;
+  height: 72rpx;
+  text-align: center;
+  align-items: center;
+  background-color: #87CEEB
+}
+
+.navbar-item {
+  flex: 1;
+  font-size: 30rpx;
+  line-height: 42rpx;
+  color: white;
+}
+
+.navbar-item-active {
+  border-bottom: 5rpx solid white;
+}
+
+
+.news-wrapper {
+  display: flex;
+  align-items: center;
+  height: 150rpx;
+  margin: 0 20rpx;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1)
+}
+
+.hot-wrapper {
+  position: relative;
+  height: 300rpx;
+  box-shadow: 0 0 0 20rpx rgba(255, 255, 255, 0.9) inset
+}
+
+.hot-image {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.news-text-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.hot-tips {
+  position: absolute;
+  top: 20rpx;
+  right: 20rpx;
+  color: white;
+  background-color: #FF00007F;
+  font-size: 25rpx;
+  line-height: 35rpx;
+  padding: 5rpx 10rpx;
+  border-radius: 0 0 0 10px;
+}
+
+.hot-text-wrapper {
+  display: flex;
+  flex-direction: column;
+  bottom: 30rpx;
+  position: absolute;
+  left: 40rpx;
+  right: 40rpx;
+  font-size: 30rpx;
+  line-height: 42rpx;
+  color: rgb(255, 255, 255)
+}
+
+.hot-title {
+  margin: 0 20rpx 10rpx 0;
+  font-size: 30rpx;
+  line-height: 42rpx;
+  font-family: "Microsoft YaHei"
+}
+
+.news-title {
+  margin: 0 20rpx 10rpx 0;
+  font-size: 30rpx;
+  line-height: 42rpx;
+  font-family: "Microsoft YaHei"
+}
+
+.news-text-sub-container {
+  font-size: 20rpx;
+  line-height: 28rpx;
+  opacity: 0.5;
+}
+
+.hot-text-sub-container {
+  font-size: 20rpx;
+  line-height: 28rpx;
+  opacity: 0.8;
+}
+
+.hot-source {
+  margin: 0 20rpx 0 0
+}
+
+.news-source {
+  margin: 0 20rpx 0 0
+}
+
+.news-image {
+  flex: 0 0 auto;
+  width: 180rpx;
+  height: 120rpx
+}

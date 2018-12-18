@@ -1,0 +1,35 @@
+<!--index.wxml-->
+<view class="main-container">
+  <view class="navbar">
+    <block wx:for="{{newsTypeName}}" wx:for-index="index" wx:for-item="item">
+      <view class="navbar-item {{activeIndex == index ? 'navbar-item-active' : ''}}" data-nav-index="{{index}}" bindtap="bindTapIndex">
+        <text>{{item}}</text>
+      </view>
+    </block>
+  </view>
+  <view class="news-item">
+    <view wx:for="{{newsList}}" wx:for-index="index" wx:for-item="item">
+      <view wx:if="{{index == 0}}" class="hot-wrapper" data-id="{{item.id}}" bindtap="bindTapId">
+        <view class="hot-text-wrapper">
+          <text class="hot-title">{{item.title}}</text>
+          <view class="hot-text-sub-container">
+            <text wx:if="{{item.source}}" class="hot-source">{{item.source}}</text>
+            <text class="hot-date">{{item.date}}</text>
+          </view>
+        </view>
+        <image class="hot-image" src="{{item.firstImage}}" />
+        <text class="hot-tips">热门</text>
+      </view>
+      <view wx:if="{{index > 0}}" class="news-wrapper" data-id="{{item.id}}" bindtap="bindTapId">
+        <view class="news-text-wrapper">
+          <text class="news-title">{{item.title}}</text>
+          <view class="news-text-sub-container">
+            <text wx:if="{{item.source}}" class="news-source">{{item.source}}</text>
+            <text class="news-date">{{item.date}}</text>
+          </view>
+        </view>
+        <image class="news-image" src="{{item.firstImage}}" />
+      </view>
+    </view>
+  </view>
+</view>
