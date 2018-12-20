@@ -8,7 +8,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    detail: ''
+    detail: '',
+    id: 0
   },
 
   /**
@@ -17,20 +18,11 @@ Page({
   onLoad: function (options) {
     let url = host + detail
     let id = options.id
-    console.log(url + ', ' + id)
-    wx.request({
-      url: url,
-      data: {
-        id: id
-      },
-      success: res => {
-        console.log(res.data.result)
-        let result = res.data.result
-        this.setData({
-          detail: result
-        })
-      }
+    this.setData({
+      id:id
     })
+    console.log(url + ', ' + id)
+    this.getNewsDetail(url, id)
   },
 
   /**
@@ -65,7 +57,10 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    let url = host + detail
+    this.getNewsDetail(url, this.data.id, () => {
+      wx.stopPullDownRefresh()
+    })
   },
 
   /**
@@ -80,5 +75,39 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  convertUTCTimeToLocalTime: function(UTCTime) {
+    if (!UTCTime) {
+      return '-'
+    }
+    function formatStr(str) {
+      return str > 9 ? str : '0' + str
+    }
+    let date2 = new Date(UTCTime)
+    let hour = date2.getHours()
+    hour = formatStr(hour)
+    let minute = date2.getMinutes()
+    minute = formatStr(minute)
+    return hour + ":" + minute
+  },
+  getNewsDetail(url, id, callback) {
+    wx.request({
+      url: url,
+      data: {
+        id: id
+      },
+      success: res => {
+        console.log(res.data.result)
+        let result = res.data.result
+        let utcTime = result.date;
+        result.date = this.convertUTCTimeToLocalTime(utcTime)
+        this.setData({
+          detail: result
+        })
+      },
+      complete: () => {
+        callback && callback()
+      }
+    })
   }
 })

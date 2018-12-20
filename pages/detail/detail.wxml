@@ -1,21 +1,22 @@
 <!--pages/detail.wxml-->
+<view class="divider"></view>
 <view class="main_container">
     <view class="detail_title">
         <text>{{detail.title}}</text>
     </view>
     <view class="detail_sub_title">
-        <view class="detail_sub_source">{{detail.source}}</view>
+        <view class="detail_sub_source" wx:if="{{detail.source}}">{{detail.source}}</view>
         <view class="detail_sub_date">{{detail.date}}</view>
-        <view class="detail_sub_read_count">{{detail.readCount}}</view>
+        <view class="detail_sub_read_count">阅读 {{detail.readCount}}</view>
     </view>
     <view class="detail_container" wx:for="{{detail.content}}" wx:for-index="index" wx:for-item="item">
-        <view wx:if="{{item.type === 'p'}}">
+        <view class="detail_p" wx:if="{{item.type === 'p'}}">
             <text>{{item.text}}</text>
         </view>
         <view wx:if="{{item.type === 'image'}}">
-            <image src="{{item.src}}"></image>
+            <image class="detail_image" mode="aspectFit" src="{{item.src}}"></image>
         </view>
-        <view wx:if="{{item.type === 'strong'}}">
+        <view class="detail_strong" wx:if="{{item.type === 'strong'}}">
             <text>{{item.text}}</text>
         </view>
     </view>

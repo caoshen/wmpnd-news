@@ -67,7 +67,7 @@ Page({
     })
     this.getNewsList()
   },
-  getNewsList: function() {
+  getNewsList: function(callback) {
     let url = host + news
     let typeList = this.data.newsType
     let type = typeList[this.data.activeIndex]
@@ -81,6 +81,9 @@ Page({
         console.log(res.data)
         let result = res.data.result;
         this.showList(result)
+      },
+      complete: () => {
+        callback && callback()
       }
     })
   },
@@ -89,5 +92,10 @@ Page({
     wx.navigateTo({
       url: '../detail/detail?id=' + id
     })
-  }
+  },
+  onPullDownRefresh() {
+    this.getNewsList(() => {
+        wx.stopPullDownRefresh()
+    })
+  },
 })
