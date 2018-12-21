@@ -17,7 +17,7 @@
             <text class="hot-date">{{item.date}}</text>
           </view>
         </view>
-        <image class="hot-image" src="{{item.firstImage}}" />
+        <image class="hot-image" src="{{item.firstImage ? item.firstImage : '../../images/placeholder.png'}}" />
         <text class="hot-tips">热门</text>
       </view>
       <view wx:if="{{index > 0}}" class="news-wrapper" data-id="{{item.id}}" bindtap="bindTapId">
@@ -28,7 +28,7 @@
             <text class="news-date">{{item.date}}</text>
           </view>
         </view>
-        <image class="news-image" src="{{item.firstImage}}" />
+        <image class="news-image" src="{{item.firstImage ? item.firstImage : '../../images/placeholder.png'}}" />
       </view>
     </view>
   </view>
